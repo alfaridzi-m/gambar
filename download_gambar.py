@@ -4,6 +4,7 @@ import time
 import datetime
 import os
 import winsound
+import shutil
 
 
 try:
@@ -41,10 +42,22 @@ xs = datetime.date.today() + datetime.timedelta(days=1)
 tanggal2 = xs.strftime('%Y%m%d')
 print("=====================================")
 
-folder = str(tanggal)
-currnet_dir = os.getcwd() ; print(f"current dir {currnet_dir}")
-os.mkdir(tanggal) ; print(f"folder {tanggal} sudah dibuat")
-os.chdir(fr'{currnet_dir}\{tanggal}') ; print(f"Pindah ke directory {currnet_dir}\{tanggal}")
+current_dir = os.getcwd()
+folder_path = os.path.join(current_dir, tanggal)
+
+print(f"Current dir: {current_dir}")
+if os.path.exists(folder_path):
+    print(f"Folder {tanggal} sudah ada")
+    shutil.rmtree(tanggal)
+    print(f"Folder {tanggal} sudah dihapus")
+
+print(f"Membuat folder {tanggal} baru")
+os.mkdir(folder_path)
+print(f"Folder {tanggal} sudah dibuat")
+
+os.chdir(folder_path)
+print(f"Pindah ke directory {folder_path}")
+
 
 # print(f"hari ini tanggal {xs}")
 opener = urllib.request.URLopener()
@@ -58,22 +71,31 @@ def program1(tanggal,tanggal2):
         ifs = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_" + tanggal + jam1 + "0000.png"
         # print(ifs)
         try:
-            opener.retrieve(ifs, fr'\ifs' + jam1 + '_' + tanggal + '.webp')
+            filenameonly = os.path.basename(ifs)
+            print(fr"Sedang Download {filenameonly}")
+            opener.retrieve(ifs, fr'ifs' + jam1 + '_' + tanggal + '.webp')
+            print(fr"ifs" + jam1 + '_' + tanggal + '.png' + " sudah di download")
         except:
             print(fr"Sepertinya link IFS {tanggal}{jam1} gagal di download")
 
     jam02 = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/ecmwf/prakiraan/Backup/RAIN/rainrate_ifs0p125_sfc_" + tanggal2 + "020000.png"
     try:
-        opener.retrieve(jam02, fr'\ifs' + "26" + '_' + tanggal + '.png')
+        filenameonly = os.path.basename(jam02)
+        print(fr"Sedang Download {filenameonly}")
+        opener.retrieve(jam02, fr'ifs' + "26" + '_' + tanggal + '.png')
+        print(fr'ifs' + "26" + '_' + tanggal + '.webp' +  "sudah di download")
     except:
         print(fr"Sepertinya link IFS 26_{tanggal} gagal di download")
-
+        
     j2 = ['01','07','13','19']
     for jam2 in j2:
         wrf = "https://web-meteo.bmkg.go.id//media/data/bmkg/mfy/wrf/prakiraan/RAIN/rainrate_wrf10km_sfc_" + tanggal + jam2 + "0000.png"
         # print(wrf)
         try:
-            opener.retrieve(wrf, fr'\wrf' + jam2 + '_' + tanggal + '.png')
+            filenameonly = os.path.basename(wrf)
+            print(fr"Sedang Download {filenameonly}")
+            opener.retrieve(wrf, fr'wrf' + jam2 + '_' + tanggal + '.png')
+            print(fr'wrf' + jam2 + '_' + tanggal + '.png' + " sudah di download")
         except:
             print(fr"Sepertinya link wrf {tanggal}{jam2} gagal di download")
 
