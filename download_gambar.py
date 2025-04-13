@@ -32,12 +32,20 @@ now = datetime.datetime.now()
 sekarang = now.strftime('%d %B %Y jam %H.%M')
 
 start =time.time()
-print(f"{'Auto Download Gambar IFS,WRF,ANGIN,SATELIT!!':^30}")
+print(f"{'Auto Download Gambar IFS,WRF,ANGIN,SATELIT!!'}")
+print(f'Hari ini adalah tanggal {sekarang}')
+print("Silahkan tunggu proses download gambar Model analisa")
 
 tanggal = datetime.date.today().strftime('%Y%m%d')
 xs = datetime.date.today() + datetime.timedelta(days=1)
 tanggal2 = xs.strftime('%Y%m%d')
-print(f'Hari ini adalah tanggal {sekarang} ')
+print("=====================================")
+
+folder = str(tanggal)
+currnet_dir = os.getcwd() ; print(f"current dir {currnet_dir}")
+os.mkdir({tanggal}) ; print(f"folder {tanggal} sudah dibuat")
+os.chdir(fr'{currnet_dir}\{tanggal}') ; print(f"Pindah ke directory {currnet_dir}\{tanggal}")
+
 # print(f"hari ini tanggal {xs}")
 opener = urllib.request.URLopener()
 opener.addheader('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36')
@@ -65,7 +73,6 @@ def program1(tanggal,tanggal2):
             opener.retrieve(wrf, fr'F:\KANTOR\gambar\wrf' + jam2 + '_' + tanggal + '.png')
         except:
             print(fr"Sepertinya link wrf {tanggal}{jam2}, hub muhammad.alfaridzi@bmkg.go.id")
-
 
     angin = "https://web-meteo.bmkg.go.id//media/data/bmkg/Angin3000ft/Streamline_" + tanggal + "070000.jpg"
     satelit = "http://202.90.198.22/IMAGE/HIMA/H08_EH_Sulsel.png"
