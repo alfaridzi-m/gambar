@@ -200,11 +200,11 @@ while True:
     program2(tanggal, tanggal2)
     end = time.time() - start
     print(fr"Selesai dalam {end} detik")
-    print(fr"Hasil download tersimpan di F:\KANTOR\gambar ")
     winsound.Beep(6000, 100)
     winsound.Beep(6000, 100)
     winsound.Beep(6000, 100)
-    input("Tekan Enter ")
+    input("Tekan Enter untuk membuka folder")
+    os.startfile(fr"{currnet_dir}\{tanggal}")
     break
 
 
