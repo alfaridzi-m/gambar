@@ -43,12 +43,15 @@ print("=====================================")
 
 folder = str(tanggal)
 currnet_dir = os.getcwd() ; print(f"current dir {currnet_dir}")
-os.mkdir({tanggal}) ; print(f"folder {tanggal} sudah dibuat")
+os.mkdir(tanggal) ; print(f"folder {tanggal} sudah dibuat")
 os.chdir(fr'{currnet_dir}\{tanggal}') ; print(f"Pindah ke directory {currnet_dir}\{tanggal}")
 
 # print(f"hari ini tanggal {xs}")
 opener = urllib.request.URLopener()
 opener.addheader('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36')
+opener.addheader('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
+opener.addheader('Accept-Language', 'en-US,en;q=0.5')
+
 def program1(tanggal,tanggal2):
     j = ['08','14','20']
     for jam1 in j:
