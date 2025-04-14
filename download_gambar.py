@@ -114,7 +114,7 @@ def program1(tanggal,tanggal2):
                 file.write(response.content)
             print(f'{filename} sudah di download')
         except Exception as e:
-            print(f'Gagal mendownload {url}: {e}')
+            print(f'Gagal mendownload {url}Karena file {e}')
 
 def bomfile():
 	rh850_00= "http://www.bom.gov.au/charts_data/IDY20108/current/RH/850hPa/IDY20108.RH-850hPa.012.png"
@@ -136,7 +136,7 @@ def bomfile():
 			opener.retrieve(url, fr'{filenamewithoutext}'+'.png')
 			print(f'{filename} sudah di download')
 		except Exception as e:
-			print(f'Gagal mendownload {url}: {e}')
+			print(f'Gagal mendownload {url}Karena file {e}')
 
 def program2(tanggal,tanggal2):
     directory = str(tanggal)
@@ -155,7 +155,7 @@ def program2(tanggal,tanggal2):
             opener.retrieve(wrf, fr"{current_dir}\{tanggal}\modelwrf{directory}\{filenamewithoutextwrf}" + '.png')
             print(fr"{filenamewithoutextwrf} sudah di download")
         except Exception as e:
-            print(fr"{filenamewithoutextwrf} gagal di download : {e}")
+            print(fr"{filenamewithoutextwrf} gagal di download Karena file {e}")
         
         try:
             filenameonlyifs = os.path.basename(ifs)
@@ -163,7 +163,7 @@ def program2(tanggal,tanggal2):
             opener.retrieve(ifs, fr"{current_dir}\{tanggal}\modelifs{directory}\{filenamewithoutextifs}" + '.png')
             print(fr"{filenamewithoutextifs} sudah di download")
         except Exception as e:
-            print(fr"{filenamewithoutextifs} gagal di download : {e}")
+            print(fr"{filenamewithoutextifs} gagal di download Karena file {e}")
 
     xx = [f'{hour:02}' for hour in range(8)]
     for k in xx:
@@ -175,14 +175,16 @@ def program2(tanggal,tanggal2):
             filenamewithoutextwrf = os.path.splitext(filenameonlywrf)[0]
             opener.retrieve(wrfxx, fr"{current_dir}\{tanggal}\modelwrf{directory}\{filenamewithoutextwrf}" + '.png')
             print(fr"{filenamewithoutextwrf} sudah di download")
-        except Exception as e:            print(fr"{filenamewithoutextwrf} gagal di download : {e}")
+        except Exception as e:            
+            print(fr"{filenamewithoutextwrf} gagal di download Karena file {e}")
         
         try:
             filenameonlyifs = os.path.basename(ifsxx)
             filenamewithoutextifs = os.path.splitext(filenameonlyifs)[0]
             opener.retrieve(ifsxx, fr"{current_dir}\{tanggal}\modelifs{directory}\{filenamewithoutextifs}" + '.png')
             print(fr"{filenamewithoutextifs} sudah di download")
-        except Exception as e:            print(fr"{filenamewithoutextifs} gagal di download : {e}")
+        except Exception as e:            
+            print(fr"{filenamewithoutextifs} gagal di download Karena file {e}")
 
     #RH
     j =  ['00', '03', '06', '09', '12', '15', '18', '21']
@@ -197,14 +199,14 @@ def program2(tanggal,tanggal2):
                 opener.retrieve(rhifs, fr"{current_dir}\{tanggal}\modelifs{directory}\{filenamewithoutextifs}" + '.png')
                 print(fr"{filenamewithoutextifs} sudah di download")
             except Exception as e:
-                print(fr"{filenamewithoutextifs} gagal di download : {e}")
+                print(fr"{filenamewithoutextifs} gagal di download Karena file {e}")
             try:
                 filenameonlywrf = os.path.basename(rhwrf)
                 filenamewithoutextwrf = os.path.splitext(filenameonlywrf)[0]
                 opener.retrieve(rhwrf, fr"{current_dir}\{tanggal}\modelwrf{directory}\{filenamewithoutextwrf}" + '.png')
                 print(fr"{filenamewithoutextwrf} sudah di download")
             except Exception as e:
-                print(fr"{filenamewithoutextwrf} gagal di download : {e}")
+                print(fr"{filenamewithoutextwrf} gagal di download Karena file {e}")
 
     #indeks
     j = ['00', '03', '06', '09', '12', '15', '18', '21']
@@ -220,14 +222,14 @@ def program2(tanggal,tanggal2):
                 opener.retrieve(labilifs, fr"{current_dir}\{tanggal}\modelifs{directory}\{filenamewithoutextifs}" + '.png')
                 print(fr"{filenamewithoutextifs} sudah di download")
             except Exception as e:
-                print(fr"{filenamewithoutextifs} gagal di download : {e}")
+                print(fr"{filenamewithoutextifs} gagal di download Karena file {e}")
             try:
                 filenameonlywrf = os.path.basename(labilifswrf)
                 filenamewithoutextwrf = os.path.splitext(filenameonlywrf)[0]
                 opener.retrieve(labilifswrf, fr"{current_dir}\{tanggal}\modelwrf{directory}\{filenamewithoutextwrf}" + '.png')
                 print(fr"{filenamewithoutextwrf} sudah di download")
             except Exception as e:
-                print(fr"{filenamewithoutextwrf} gagal di download : {e}")
+                print(fr"{filenamewithoutextwrf} gagal di download Karena file {e}")
 
     #probabilistic dan esembel model
     poe20 = f"https://web-meteo.bmkg.go.id//media/data/bmkg/probabilistic//POE20_24hrprec_{tanggal}000000_ifs.png"
@@ -245,7 +247,7 @@ def program2(tanggal,tanggal2):
             opener.retrieve(nn, fr"{current_dir}\{tanggal}\esembeldanprobabilistic{directory}\{filenamewithoutext}" + '.png')
             print(fr"{filenamewithoutext} sudah di download")
         except Exception as e:            
-            print(fr"{filenamewithoutext} gagal di download : {e}")
+            print(fr"{filenamewithoutext} gagal di download Karena file {e}")
 
     yy = [emeanifs, emeangefs, emeanaccessgt]
     for nn in yy:
@@ -255,7 +257,7 @@ def program2(tanggal,tanggal2):
             opener.retrieve(nn, fr"{current_dir}\{tanggal}\esembeldanprobabilistic{directory}\{filenamewithoutext}" + '.png')
             print(fr"{filenamewithoutext} sudah di download")
         except Exception as e:            
-            print(fr"{filenamewithoutext} gagal di download : {e}")
+            print(fr"{filenamewithoutext} gagal di download Karena file {e}")
 
 while True:
     print("=====================================")
