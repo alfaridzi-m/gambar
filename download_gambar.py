@@ -33,7 +33,7 @@ class color:
     END = '\033[0m'
 
 now = datetime.datetime.now()
-sekarang = now.strftime('%d %B %Y jam %H.%M')
+sekarang = now.strftime('%d %B %Y at %H:%M')
 
 start =time.time()
 print(f"{'Auto Download Gambar IFS,WRF,ANGIN,SATELIT!!'}")
@@ -265,7 +265,7 @@ while True:
     print("=====================================")
     print("Proses download file yang diperlukan analisa")
     time.sleep(1)
-    teks = fr"Program {sekarang} ended, press enter to open folder"
+    teks = fr"Program {sekarang} ended, press enter to open folder. Thank you"
     tts = gTTS(text=teks, lang='en', slow=False)
     tts.save("sukses.mp3")
     print("=====================================")
