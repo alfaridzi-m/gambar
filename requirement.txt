@@ -1,0 +1,9 @@
+lakukan semua ini menggunakan CMD
+
+update pip terlebih dahulu dengan
+
+python -m pip install --upgrade pip setuptools wheel
+
+kemudian install module yang diperlukan dengan command dibawah ini
+
+pip install requests gTTS playsound
